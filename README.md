@@ -1,2 +1,85 @@
-# JetQuant
-A unified quantization, profiling, and deployment toolkit for NVIDIA Jetson Orin, supporting CV and LLM models with TensorRT acceleration.面向 NVIDIA Jetson Orin 的统一量化、分析与部署工具链，支持 CV 与 LLM 模型的 TensorRT 加速优化。
+# JetQuant (开发中)
+面向 Jetson Orin 的量化与推理优化工具链
+
+统一模型量化、性能分析与部署流程
+
+---
+
+## 项目状态
+JetQuant 当前处于架构设计与早期开发阶段。  
+本仓库用于记录设计蓝图与演进路线。
+
+---
+
+## 1. 项目动机
+在 Jetson 上部署深度学习模型通常需要：
+
+- PyTorch → ONNX 导出
+- 手动配置 TensorRT
+- 编写 INT8 校准代码
+- 排查量化精度下降
+- 分层性能分析
+
+这些流程：
+
+- 工具分散
+- 调试困难
+- 低复用性
+
+**JetQuant 旨在构建一套面向 Jetson 的统一优化流程。**
+
+---
+
+## 2. 项目愿景
+JetQuant 不仅是量化工具，而是：
+
+- **部署分析工具链**：提供可复现、可调试的部署流程
+- **Jetson 优化框架**：针对 Orin Nano 提供性能优化方案
+- **工程化实践体系**：遵循可维护的开源工程规范
+
+设计哲学：
+
+- **模型无关**：支持 CV、LLM 及未来多模态模型
+- **Jetson 优化优先**：面向端侧设备的性能和功耗优化
+- **可分析、可调试**：提供量化误差和性能分析工具
+- **工程导向**：易于扩展、可维护
+
+---
+
+## 3. 第一阶段范围 (MVP)
+**目标**：实现量化功能，先支持部分 LLM 模型
+
+- 支持 PyTorch → ONNX → TensorRT 的量化流程
+- 支持 FP16 / INT8
+- 内置 LLM 模型量化预设
+- 输出量化误差分析报告
+- 提供基础性能分析（推理延迟、显存占用）
+
+> MVP 核心原则：先做“可用闭环”，功能有限，但可运行，方便测试和迭代
+
+---
+
+## 4. 未来规划
+阶段规划（仅示意）：
+
+1. **Phase 1** – 量化 MVP  
+   - LLM 模型量化
+   - FP16 / INT8
+   - 基础性能分析
+
+2. **Phase 2** – 层级敏感性分析  
+   - 量化误差扫描
+   - 关键层 fallback 支持
+   - 可视化报告
+
+3. **Phase 3** – 高级优化  
+   - Jetson 功耗模式预设
+   - 多模型类型支持（CV / Multimodal）
+   - Web Dashboard / CLI 工具完善
+
+---
+
+## 5. 目标用户
+- Jetson 开发者
+- Edge AI 工程师
+- 需要快速量化 LLM 模型的研究者或个人开发者
